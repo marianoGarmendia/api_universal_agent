@@ -36,7 +36,7 @@ import {
   getPisos2,
 } from "./pdf-loader_tool.mjs";
 // import { encode } from "gpt-3-encoder";
-import { createbookingTool } from "./booking-cal.mjs";
+
 // import { ensureToolCallsHaveResponses } from "./ensure-tool-response.mjs";
 import { getUniversalFaq, noticias_y_tendencias } from "./firecrawl.mjs";
 
