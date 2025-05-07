@@ -54,7 +54,7 @@ const model = new ChatOpenAI({
   model: "gpt-4o",
   apiKey: process.env.OPENAI_API_KEY,
   temperature: 0,
-});
+}).withConfig({ tags: ["nostream"] });;
 
 export const pdfTool = tool(
   async ({ query }) => {
@@ -65,7 +65,7 @@ export const pdfTool = tool(
       k: 5,
     });
     const docsFound = await retriever.invoke(query);
-    console.dir(docsFound, { depth: null });
+    if(!docsFound || !docsFound[0]?.pageContent) return "No se encontraron resultados para la consulta";
 
     const content = docsFound.map((doc) => doc.pageContent);
     const texto = content.join(" ");
@@ -105,7 +105,7 @@ export const cotizacion = tool(
 
     
   `;
-    const response = await model.invoke(prompt);
+    const response = await model.invoke(prompt);;
     if(!response) {
       return "No se encontraron resultados para la cotizacion de asistencia de viaje";
     }

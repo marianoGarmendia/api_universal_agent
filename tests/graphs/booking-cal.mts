@@ -12,7 +12,7 @@ export const model = new ChatOpenAI({
   model: "gpt-4o",
   apiKey: process.env.OPENAI_API_KEY_WIN_2_WIN,
   temperature: 0,
-});
+}).withConfig({tags: ["nostream"]});
 
 interface Slot {
   time: string;

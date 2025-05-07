@@ -496,7 +496,7 @@ const toolNodo = async (state: typeof newState.State) => {
       const res = await getUniversalFaq.invoke(toolArgs);
       toolMessage = new ToolMessage(res, tool_call_id, "getUniversalFaq");
     } else if (toolName === "noticias_y_tendencias_de_viaje") {
-      const res = await createbookingTool.invoke(toolArgs);
+      const res = await noticias_y_tendencias.invoke(toolArgs);
       toolMessage = new ToolMessage(res, tool_call_id, "noticias_y_tendencias_de_viaje");
     }else if(toolName === "mi_cobertura"){
       const responseInterrupt = humanNode(lastMessage);
