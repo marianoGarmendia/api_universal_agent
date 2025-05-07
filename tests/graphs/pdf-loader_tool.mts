@@ -117,7 +117,7 @@ export const cotizacion = tool(
     schema: z.object({
       destino: z.string().describe("Destino del viaje"),
       fecha: z.string().describe("Fecha de inicio del viaje"),
-      pasajeros: z.number().describe("Cantidad de pasajeros"),
+      pasajeros: z.string().describe("Cantidad de pasajeros"),
     }),
   }
 );

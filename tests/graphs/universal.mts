@@ -430,6 +430,12 @@ interface CoberturaToolArgs {
   tipo_de_documento: string;
 }
 
+interface CotizacionToolArgs {
+  destino: string;
+  fecha: string;
+  pasajeros: string;
+}
+
 const toolNodo = async (state: typeof newState.State) => {
   const { messages } = state;
 
@@ -449,7 +455,7 @@ const toolNodo = async (state: typeof newState.State) => {
       start: string;
       email: string;
     } & { documento: string; tipo_de_documento: string } & {
-      consulta: string;};
+      consulta: string;} & CotizacionToolArgs;
     let tool_call_id = lastMessage.tool_calls[0].id as string;
 
     if (toolName === "Obtener_pisos_en_venta_dos") {
@@ -517,7 +523,7 @@ const toolNodo = async (state: typeof newState.State) => {
         }
       }
     }else if(toolName === "cotizacion_de_asistencia_de_viaje"){
-      const res = await mi_cobertura.invoke(toolArgs);
+      const res = await cotizacion.invoke(toolArgs);
       if(typeof res !== "string"){
         toolMessage = new ToolMessage("Hubo un problema al consultar la cotización", tool_call_id, "cotizacion_de_asistencia_de_viaje");}
       else{
